@@ -4,22 +4,23 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Crucial for responsive padding */
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Poppins", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 p {
   color: rgb(85, 85, 85);
 }
 
+/* TRANSITION */
 a, .btn {
   transition: all 300ms ease;
 }
@@ -32,11 +33,15 @@ nav, #hamburger-nav {
   height: 17vh;
 }
 
-.nav-links {
+.logo-container {
   display: flex;
-  gap: 2rem;
-  list-style: none;
-  font-size: 1.5rem;
+  align-items: center;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  margin-right: 1rem;
 }
 
 .logo {
@@ -59,9 +64,16 @@ a:hover {
   text-decoration-color: rgb(181, 181, 181);
 }
 
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+
 /* HAMBURGER MENU */
 #hamburger-nav {
-  display: none; /* Hidden by default on desktop */
+  display: none; /* Hidden by default, enable in Media Queries */
 }
 
 .hamburger-menu {
@@ -102,7 +114,6 @@ a:hover {
   padding: 10px;
   text-align: center;
   font-size: 1.5rem;
-  color: black;
 }
 
 .menu-links li {
@@ -113,19 +124,37 @@ a:hover {
   max-height: 300px;
 }
 
+/* Hamburger Animation */
+.hamburger-icon.open span:first-child {
+  transform: rotate(45deg) translate(10px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.open span:last-child {
+  transform: rotate(-45deg) translate(10px, -5px);
+}
+
 /* SECTIONS */
 section {
   padding-top: 4vh;
   margin: 0 10rem;
   box-sizing: border-box;
-  min-height: 100vh; /* Changed from fixed height to min-height */
+  min-height: fit-content;
 }
 
 .section-container {
   display: flex;
   gap: 4rem;
-  justify-content: center;
-  align-items: center;
+}
+
+.section__pic-container {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
 }
 
 /* PROFILE SECTION */
@@ -136,21 +165,13 @@ section {
   height: 80vh;
 }
 
-.section__pic-container {
-  display: flex;
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
-}
-
-.section__pic-container img {
-  width: 100%;
-  border-radius: 50%; /* Common for profile circles */
-}
-
 .section__text {
   align-self: center;
   text-align: center;
+}
+
+.section__text p {
+  font-weight: 600;
 }
 
 .section__text__p2 {
@@ -163,7 +184,19 @@ section {
   text-align: center;
 }
 
-/* BUTTONS & ICONS */
+#socials-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+/* ICONS & BUTTONS */
+.icon {
+  cursor: pointer;
+  height: 2rem;
+}
+
 .btn-container {
   display: flex;
   justify-content: center;
@@ -177,6 +210,7 @@ section {
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   background: none;
+  cursor: pointer;
 }
 
 .btn-color-1 {
@@ -193,17 +227,25 @@ section {
   color: white;
 }
 
-.icon {
-  cursor: pointer;
-  height: 2rem;
+/* ABOUT SECTION */
+#about {
+  position: relative;
 }
 
-/* EXPERIENCE & PROJECTS */
-.about-containers, .experience-details-container {
+.about-containers {
   display: flex;
   gap: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+.about-details-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.about-pic {
+  border-radius: 2rem;
 }
 
 .details-container {
@@ -215,6 +257,20 @@ section {
   text-align: center;
 }
 
+.arrow {
+  position: absolute;
+  right: -5rem;
+  bottom: 2.5rem;
+}
+
+/* EXPERIENCE SECTION */
+.experience-sub-title {
+  color: rgb(85, 85, 85);
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
 .article-container {
   display: flex;
   text-align: initial;
@@ -223,72 +279,113 @@ section {
   justify-content: space-around;
 }
 
-/* DARK MODE */
+article {
+  display: flex;
+  width: 10rem;
+  gap: 0.5rem;
+}
+
+/* PROJECTS SECTION */
+.color-container {
+  border: rgb(163, 163, 163) 0.1rem solid;
+  background: rgb(250, 250, 250);
+}
+
+.project-img {
+  border-radius: 2rem;
+  width: 90%;
+}
+
+.project-title {
+  margin: 1rem;
+  color: black;
+}
+
+/* CONTACT & FOOTER */
+#contact {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.contact-info-upper-container {
+  display: flex;
+  justify-content: center;
+  border-radius: 2rem;
+  border: rgb(163, 163, 163) 0.1rem solid;
+  background: rgb(250, 250, 250);
+  margin: 2rem auto;
+  padding: 0.5rem;
+}
+
+.contact-info-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+footer {
+  height: 26vh;
+  margin: 0 1rem;
+  padding: 2rem;
+}
+
+/* DARK MODE OVERRIDES */
 body.dark-mode {
   background-color: #121212;
   color: white;
 }
 
-.dark-mode p, .dark-mode a {
+.dark-mode p, 
+.dark-mode .experience-sub-title {
+  color: #ccc;
+}
+
+.dark-mode a, 
+.dark-mode .project-title,
+.dark-mode .logo {
   color: white;
 }
 
-/* --- RESPONSIVE MEDIA QUERIES --- */
-
-/* For Tablets and smaller laptops */
-@media screen and (max-width: 1200px) {
-  section {
-    margin: 0 5%;
-  }
+.dark-mode .details-container,
+.dark-mode .contact-info-upper-container,
+.dark-mode .color-container {
+  background-color: #1e1e1e;
+  border-color: #444;
 }
 
-/* For Mobile Phones */
-@media screen and (max-width: 600px) {
-  nav {
-    display: none; /* Hide desktop nav */
-  }
-  
-  #hamburger-nav {
-    display: flex; /* Show hamburger nav */
-  }
+.dark-mode .hamburger-icon span {
+  background-color: white;
+}
 
-  section {
-    margin: 0 1rem;
-    height: auto;
-    min-height: fit-content;
-    padding-bottom: 2rem;
-  }
+.dark-mode .menu-links {
+  background-color: #1e1e1e;
+}
 
-  .section-container, #profile {
-    flex-direction: column;
-    height: auto;
-    gap: 2rem;
-  }
+/* Dark mode toggle button */
+#darkModeToggle {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #eff3f7;
+  color: #130101;
+  border: none;
+  border-radius: 5px;
+}
 
-  .section__pic-container {
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
-  }
+#darkModeToggle:hover {
+  background-color: #740101;
+  color: white;
+}
 
-  .title {
-    font-size: 2rem; /* Shrunk for mobile */
-  }
+/* Image Hover Effects */
+.image-container img {
+  width: 200px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
 
-  .section__text__p2 {
-    font-size: 1.25rem;
-  }
-
-  .about-containers, .experience-details-container, .article-container {
-    flex-direction: column;
-  }
-
-  .contact-info-upper-container {
-    flex-direction: column;
-  }
-  
-  footer {
-    height: auto;
-    padding: 2rem 0;
-  }
+.image-container img:hover {
+  transform: scale(1.05);
 }
